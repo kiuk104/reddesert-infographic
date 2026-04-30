@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>붉은사막 판매량 분석 인포그래픽</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:#0a0a0f; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; }
+  .hero { text-align:center; margin-bottom:60px; }
+  .badge { display:inline-block; background:linear-gradient(90deg,#c0392b,#e74c3c); color:#fff; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:20px; }
+  h1 { font-size:clamp(24px,5vw,48px); font-weight:900; line-height:1.2; margin-bottom:12px; }
+  h1 em { color:#e74c3c; font-style:normal; }
+  .sub { font-size:14px; color:rgba(255,255,255,0.45); }
+  .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:860px; width:100%; }
+  @media(max-width:640px){ .cards{ grid-template-columns:1fr; } }
+  .card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:36px 32px; text-decoration:none; color:#fff; transition:transform .2s,border-color .2s,box-shadow .2s; position:relative; overflow:hidden; }
+  .card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--accent); }
+  .card:hover { transform:translateY(-6px); border-color:rgba(231,76,60,.4); box-shadow:0 20px 40px rgba(0,0,0,.4); }
+  .card-icon { font-size:36px; margin-bottom:16px; }
+  .card-title { font-size:20px; font-weight:900; margin-bottom:10px; }
+  .card-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:20px; }
+  .card-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); font-size:11px; color:rgba(255,255,255,0.5); padding:3px 10px; border-radius:20px; }
+  .arrow { position:absolute; right:24px; bottom:24px; font-size:20px; opacity:0.4; }
+  .footer { margin-top:48px; font-size:12px; color:rgba(255,255,255,0.2); text-align:center; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">📊 Infographic Series</div>
+  <h1>붉은사막 <em>(Crimson Desert)</em><br>판매량 분석 시리즈</h1>
+  <p class="sub">Pearl Abyss · 2026.03.20 출시 · 데이터 기준일: 2026.04.30</p>
+</div>
+<div class="cards">
+  <a class="card" href="infographic1.html" style="--accent:linear-gradient(90deg,#8b0000,#e74c3c)">
+    <div class="card-icon">📈</div>
+    <div class="card-title">판매량 추이 인포그래픽</div>
+    <div class="card-desc">출시 후 D+26일까지 실제 판매 마일스톤, 스팀 지표, 타임라인, 경쟁작 비교, 핵심 분석을 담은 기본 인포그래픽입니다.</div>
+    <div class="card-tags"><span class="tag">📊 판매 마일스톤</span><span class="tag">⏱ 타임라인</span><span class="tag">🎮 스팀 지표</span><span class="tag">🏆 경쟁 비교</span></div>
+    <div class="arrow">→</div>
+  </a>
+  <a class="card" href="infographic2.html" style="--accent:linear-gradient(90deg,#7a5500,#f5a623)">
+    <div class="card-icon">🔭</div>
+    <div class="card-title">판매량 전망 심층 분석</div>
+    <div class="card-desc">5개 증권사 리포트, 3대 시나리오, 분기별 로드맵, 드라이버/리스크, 2026~2028 장기 전망 심층 분석입니다.</div>
+    <div class="card-tags"><span class="tag">🏦 증권사 5사</span><span class="tag">🎯 3대 시나리오</span><span class="tag">📅 분기 로드맵</span><span class="tag">⚡ 드라이버/리스크</span></div>
+    <div class="arrow">→</div>
+  </a>
+</div>
+<div class="footer">📌 공개된 언론 보도 및 증권사 리포트 기반 | 기준일: 2026.04.30</div>
+</body>
+</html>
