@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>붉은사막 판매량 전망 심층 분석</title>
+<title>붉은사막 판매량 전망 심층 분석 (2026.08 기준)</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -21,67 +21,188 @@ body{font-family:'Noto Sans KR',sans-serif;background:#080810;color:#fff;overflo
 .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:28px 24px}
 .back-btn{display:inline-block;margin-top:20px;padding:10px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:600;transition:all .2s}
 .back-btn:hover{background:rgba(231,76,60,.15);border-color:rgba(231,76,60,.3);color:#fff}
+table.rt{width:100%;border-collapse:collapse;min-width:760px}
+table.rt th{padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:left;background:rgba(232,22,60,.12);white-space:nowrap}
+table.rt td{padding:13px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+table.rt tr:last-child td{border-bottom:none}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.sc-grid{grid-template-columns:1fr}}
+.sc{border-radius:18px;padding:28px 22px;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.sc h4{font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:14px}
+.sc .big{font-size:30px;font-weight:900;margin-bottom:4px;line-height:1.1}
+.sc .cap{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:20px}
+.sc .row{background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.sc .row:last-child{margin-bottom:0}
+.sc .rl{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px}
+.sc .rv{font-size:15px;font-weight:700}
+.sc .rt2{font-size:12px;color:rgba(255,255,255,.65);line-height:1.6}
+.pill{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+.qbar{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.qlab{width:104px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0;line-height:1.35}
+.qtrack{flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:40px;overflow:hidden}
+.qfill{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:13px;font-weight:700;white-space:nowrap}
+.qnote{width:130px;font-size:11px;flex-shrink:0;line-height:1.4}
+@media(max-width:760px){.qnote{display:none}.qlab{width:78px;font-size:11px}}
+.dr-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.dr-grid{grid-template-columns:1fr}}
+.dr-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.dr-item:last-child{border-bottom:none}
+.dr-ico{font-size:20px;flex-shrink:0;width:26px;text-align:center}
+.dr-t{font-size:13px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dr-b{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65}
+.st{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.st.on{background:rgba(76,255,128,.14);color:#4cff80;border:1px solid rgba(76,255,128,.3)}
+.st.mid{background:rgba(245,166,35,.14);color:#f5a623;border:1px solid rgba(245,166,35,.3)}
+.st.off{background:rgba(255,255,255,.08);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.14)}
+.st.bad{background:rgba(232,22,60,.14);color:#e8163c;border:1px solid rgba(232,22,60,.3)}
+.yr-grid{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.yr-lab{width:64px;font-size:11px;font-weight:700;text-align:right;flex-shrink:0}
+.yr-cells{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.yr-cell{border-radius:8px;padding:12px;text-align:center}
+.yr-v{font-size:17px;font-weight:900}
+.yr-c{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+.note{background:rgba(243,156,18,.07);border:1px solid rgba(243,156,18,.22);border-radius:12px;padding:14px 18px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.75;margin-top:18px}
+.note b{color:#f5a623}
+.note.red{background:rgba(232,22,60,.07);border-color:rgba(232,22,60,.22)}
+.note.red b{color:#e8163c}
+.sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:860px){.sum-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="hero">
 <div class="badge">📈 Sales Forecast · Deep Dive</div>
-<h1>붉은사막 <em>판매량 전망</em> 심층 분석<br><span style="font-size:0.65em;color:rgba(255,255,255,0.5);font-weight:400">증권사·시나리오별 로드맵 상세 보완판</span></h1>
-<p class="hero-sub">Pearl Abyss · Crimson Desert · 2026.03.20 출시</p>
-<p class="hero-date">기준일: 2026년 4월 30일 | 출처: NH투자증권, 메리츠증권, 삼성증권, DS투자증권, 유진투자증권, 인벤, 지디넷, 머니투데이 등</p>
+<h1>붉은사막 <em>판매량 전망</em> 심층 분석<br><span style="font-size:0.6em;color:rgba(255,255,255,0.5);font-weight:400">2분기 실적발표 임박 · 하반기 시나리오 재점검</span></h1>
+<p class="hero-sub">Pearl Abyss · Crimson Desert · 2026.03.20 출시 (D+140)</p>
+<p class="hero-date">기준일: 2026년 8월 7일 | 출처: NH·메리츠·삼성·DS·유진·유안타증권, 펄어비스 IR, 인벤, ZDNet, 머니투데이 등</p>
 <a class="back-btn" href="index.html">← 목록으로 돌아가기</a>
 </div>
 <div class="wrap">
-<div class="sec-hd">🏦 증권사별 판매량 추정 & 목표주가 총정리</div>
+
+<div class="sec-hd">⏱ 다음 분기점: 2분기 실적발표 (8월 중순 예정)</div>
+<div class="card" style="background:linear-gradient(135deg,rgba(30,5,15,.7),rgba(10,5,25,.5));border-color:rgba(232,22,60,.22)">
+<div class="sum-grid">
+<div style="text-align:center;padding:12px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px">1Q26 확정 (5.12)</div><div style="font-size:26px;font-weight:900;color:#4cff80">3,285억</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">영업이익 2,121억<br>창사 이래 최대</div></div>
+<div style="text-align:center;padding:12px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px">2Q26 컨센서스</div><div style="font-size:26px;font-weight:900;color:#f5a623">약 2,800억</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">영업이익 1,300~1,430억<br>QoQ 매출 -15%</div></div>
+<div style="text-align:center;padding:12px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px">붉은사막 연간 가이던스</div><div style="font-size:26px;font-weight:900;color:#3498db">6,441~7,348억</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">전사 가이던스의 약 73~75%<br>회사 공식 제시</div></div>
+<div style="text-align:center;padding:12px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px">상반기 누적 전망</div><div style="font-size:26px;font-weight:900;color:#e8163c">6,086억</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">영업이익 3,544억<br>2025년 연매출의 1.7배</div></div>
+</div>
+<div class="note">👀 <b>관전 포인트 3가지</b> (발표일은 출처별로 8/11~13로 엇갈립니다) — ① 누적 판매량 갱신 발표 여부 (6.11 600만 이후 침묵) ② DLC 출시 일정 및 가격 공개 여부 (회사는 "3분기 중 구체화" 예고) ③ 연간 가이던스 유지/상향/하향 여부. 이 세 가지가 하반기 시나리오를 확정합니다.</div>
+</div>
+
+<div class="sec-hd">🏦 증권사별 판매량 추정 &amp; 목표주가 총정리</div>
 <div class="card" style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;min-width:700px">
-<thead><tr style="background:rgba(232,22,60,.12)">
-<th style="padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:left">증권사</th>
-<th style="padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:left">보고서 시점</th>
-<th style="padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:center">2026 판매량 추정</th>
-<th style="padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:center">목표주가</th>
-<th style="padding:11px 14px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-align:left">핵심 코멘트</th>
+<table class="rt">
+<thead><tr>
+<th>증권사</th><th>최신 리포트</th><th style="text-align:center">2026 판매량 추정</th><th style="text-align:center">목표주가</th><th>핵심 코멘트</th>
 </tr></thead><tbody>
-<tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:13px 14px;font-size:13px;font-weight:700">NH투자증권</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">출시 전 → 3.25</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#e8163c;text-align:center">349만 → <span style="color:#f5a623">526만</span></td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#f5a623;text-align:center">상향</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">초기 흥행 확인 후 대폭 상향. 최종 시나리오 800만 장 제시</td></tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:13px 14px;font-size:13px;font-weight:700">메리츠증권</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">3.26 → 4.1</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#e8163c;text-align:center">450만 → <span style="color:#f5a623">中 2분기 +200만</span></td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#4cff80;text-align:center">62,000 → 100,000</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">중국 2분기 200만 장 가정 시 목표주가 10만원 대폭 상향</td></tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:13px 14px;font-size:13px;font-weight:700">삼성증권</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">3.20 → 3.23</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#e8163c;text-align:center">시장 컨센서스 수준</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#f5a623;text-align:center">36,000 → 42,000</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">보수적 투자 판단. 영업이익 1,909억 원 추정. 차기작 공백 유의</td></tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:13px 14px;font-size:13px;font-weight:700">DS투자증권</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">3.30</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#e8163c;text-align:center">최종 800만 장</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#f5a623;text-align:center">61,200 → 상향</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">낙관 시나리오 1년 판매 800만 장 제시. 조롱을 환호로 바꾼 게임</td></tr>
-<tr><td style="padding:13px 14px;font-size:13px;font-weight:700">유진투자증권</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">출시 전</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#e8163c;text-align:center">300~500만, 낙관 1,000만</td><td style="padding:13px 14px;font-size:13px;font-weight:700;color:#f5a623;text-align:center">HOLD</td><td style="padding:13px 14px;font-size:12px;color:rgba(255,255,255,.5)">고티 수상 수준 최대 1,000만 장 가능성 언급. 가장 보수적</td></tr>
+<tr><td style="font-weight:700">NH투자증권<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">안재민</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.05.13</td><td style="text-align:center;font-weight:700"><span style="color:rgba(255,255,255,.4)">349만 → 526만 →</span> <span style="color:#4cff80;font-size:15px">950만장</span></td><td style="text-align:center;font-weight:700;color:#4cff80">65,000원<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">(51,000에서 상향)</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">1분기 서프라이즈 후 최대폭 상향. 붉은사막 연매출 전망도 3,835억 → 6,384억으로 상향</td></tr>
+<tr><td style="font-weight:700">DS투자증권<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">최승호</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.05.13</td><td style="text-align:center;font-weight:700"><span style="color:rgba(255,255,255,.4)">800만 →</span> <span style="color:#4cff80;font-size:15px">900만장</span><br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">(범위 800~1,100만)</span></td><td style="text-align:center;font-weight:700;color:#4cff80">100,000원<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">(90,000에서 상향)</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">가장 공격적. 2026F 영업이익 5,298억 제시. "조롱을 환호로 바꾼 게임"</td></tr>
+<tr><td style="font-weight:700">유진투자증권<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">정의훈</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.05.13</td><td style="text-align:center;font-weight:700;color:#f5a623;font-size:15px">850만장</td><td style="text-align:center;font-weight:700;color:#4cff80">72,000원<br><span style="font-size:11px;color:#4cff80;font-weight:400">Hold → <b>Buy</b> 상향</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">가장 보수적이던 곳이 투자의견 상향. 목표주가 35,000 → 72,000원 (2배 이상)</td></tr>
+<tr><td style="font-weight:700">메리츠증권<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">이효진</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.07.09</td><td style="text-align:center;font-size:12px;color:rgba(255,255,255,.5)">별도 미제시<br>(2027F PER 11배)</td><td style="text-align:center;font-weight:700;color:#4cff80">100,000원</td><td style="font-size:12px;color:rgba(255,255,255,.5)">"현재 빌드는 실제 개발분의 50% 미만 → <b style="color:#4cff80">DLC 제작기간 짧을 것</b>". 인건비 절감으로 수익성 방어</td></tr>
+<tr><td style="font-weight:700">유안타증권</td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.06.30</td><td style="text-align:center;font-size:12px;color:rgba(255,255,255,.5)">별도 미제시<br>(12M fwd EPS 4,099원)</td><td style="text-align:center;font-weight:700;color:#f5a623">52,000원</td><td style="font-size:12px;color:rgba(255,255,255,.5)">"2026년 이후 <b style="color:#e8163c">이익 피크아웃 + 차기작 공백</b>" → 피어 대비 30% 할인 적용</td></tr>
+<tr><td style="font-weight:700">삼성증권<br><span style="font-size:11px;color:rgba(255,255,255,.35);font-weight:400">오동환</span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">2026.03.23</td><td style="text-align:center;font-weight:700;color:#3498db;font-size:15px">631만장</td><td style="text-align:center;font-weight:700;color:#3498db">42,000원<br><span style="font-size:11px;color:#3498db;font-weight:400"><b>HOLD 유지</b></span></td><td style="font-size:12px;color:rgba(255,255,255,.5)">최저 전망. "DLC 1~2년 소요, 도깨비·플랜8 개발기간 장기" → 차기작 공백 경계</td></tr>
 </tbody></table>
 </div>
-<div class="sec-hd">🎯 3대 시나리오별 연간 판매량 & 매출 전망</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-<div style="background:linear-gradient(160deg,rgba(20,40,80,.6),rgba(10,20,50,.4));border:1px solid rgba(52,152,219,.25);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a3a8b,#3498db)"></div><div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#3498db;margin-bottom:14px">📘 기본 시나리오</div><div style="font-size:32px;font-weight:900;color:#3498db;margin-bottom:4px">526만 장</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:20px">NH투자증권 추정치</div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">2026년 매출 추정</div><div style="font-size:16px;font-weight:700;color:#3498db">~4,200억원</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">전제 조건</div><div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.6">중국 판호 없음 / 할인 1~2회 / DLC 미출시</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">장기 누적 (4년)</div><div style="font-size:15px;font-weight:700;color:#3498db">~1,000만 장</div></div></div>
-<div style="background:linear-gradient(160deg,rgba(60,20,20,.6),rgba(30,10,10,.4));border:2px solid rgba(232,22,60,.35);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;box-shadow:0 0 30px rgba(232,22,60,.1)"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8b0000,#e8163c)"></div><div style="position:absolute;top:16px;right:16px;background:rgba(232,22,60,.2);border:1px solid rgba(232,22,60,.4);color:#e8163c;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px">MAIN</div><div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#e8163c;margin-bottom:14px">🔥 낙관 시나리오</div><div style="font-size:32px;font-weight:900;color:#e8163c;margin-bottom:4px">800~850만 장</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:20px">DS·NH투자증권 최고 시나리오</div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">2026년 매출 추정</div><div style="font-size:16px;font-weight:700;color:#e8163c">~6,400~6,800억원</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">전제 조건</div><div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.6">중국 2분기 +200만 / 여름 할인 / DLC 출시 / 멀티플레이 베타</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">장기 누적 (4년)</div><div style="font-size:15px;font-weight:700;color:#e8163c">~1,500만 장</div></div></div>
-<div style="background:linear-gradient(160deg,rgba(60,40,0,.6),rgba(30,20,0,.4));border:1px solid rgba(245,166,35,.25);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7a5500,#f5a623)"></div><div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#f5a623;margin-bottom:14px">⭐ 슈퍼 낙관 시나리오</div><div style="font-size:32px;font-weight:900;color:#f5a623;margin-bottom:4px">1,000만 장+</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:20px">고티 수상 수준 (유진·일부 분석가)</div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">매출 추정</div><div style="font-size:16px;font-weight:700;color:#f5a623">~8,000억~1조원</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;margin-bottom:10px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">전제 조건</div><div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.6">중국 판호 조기 / GOTY 수상 / 시즌패스·멀티 성공</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px 14px"><div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px">달성 확률</div><div style="font-size:15px;font-weight:700;color:#f5a623">낮음 (15~20%)</div></div></div>
+<div class="note red">⚠️ <b>주의: 리포트가 3개월째 멈춰 있습니다.</b> 판매량 추정치를 갱신한 마지막 리포트는 <b>2026년 5월 13일</b>이며, 그 이후 상향·하향 어느 쪽으로도 조정된 리포트가 확인되지 않습니다. 그 사이 판매 속도는 뚜렷이 둔화됐고(첫 26일 500만 → 이후 57일 100만), <b>중국 판호는 회사가 사실상 보류 의사를 밝혔습니다</b>했습니다. 현재 컨센서스 목표주가 72,000원과 실제 주가 35,350원(8.6)의 괴리가 100%를 넘는 것도 이 시차 때문으로 보입니다. <b>8월 중순 실적발표 후 리포트 재조정이 불가피합니다.</b></div>
+
+<div class="sec-hd">🎯 하반기 3대 시나리오 (2026년 연간 기준)</div>
+<div class="sc-grid">
+<div class="sc" style="background:linear-gradient(160deg,rgba(20,40,80,.6),rgba(10,20,50,.4));border:1px solid rgba(52,152,219,.25)"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a3a8b,#3498db)"></div>
+<h4 style="color:#3498db">📘 보수 시나리오</h4>
+<div class="big" style="color:#3498db">700~760만장</div>
+<div class="cap">삼성증권 추정치(631만) 상회 수준</div>
+<div class="row"><div class="rl">2026년 전사 매출</div><div class="rv" style="color:#3498db">약 8,800억 (가이던스 하단)</div></div>
+<div class="row"><div class="rl">전제 조건</div><div class="rt2">DLC 연내 미출시 · 할인 1회 · 판호 없음 · 현 둔화세 지속</div></div>
+<div class="row"><div class="rl">발생 확률 (자체 추정)</div><div class="rv" style="color:#3498db">약 30%</div></div>
 </div>
-<div class="sec-hd">📅 분기별 누적 판매량 전망 로드맵</div>
+<div class="sc" style="background:linear-gradient(160deg,rgba(60,20,20,.6),rgba(30,10,10,.4));border:2px solid rgba(232,22,60,.35);box-shadow:0 0 30px rgba(232,22,60,.1)"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8b0000,#e8163c)"></div>
+<div class="pill" style="background:rgba(232,22,60,.2);border:1px solid rgba(232,22,60,.4);color:#e8163c">MAIN</div>
+<h4 style="color:#e8163c">🔥 기본 시나리오</h4>
+<div class="big" style="color:#e8163c">800~880만장</div>
+<div class="cap">유진(850만)·시장 컨센서스 근접</div>
+<div class="row"><div class="rl">2026년 전사 매출</div><div class="rv" style="color:#e8163c">약 9,068억 (컨센서스)</div></div>
+<div class="row"><div class="rl">전제 조건</div><div class="rt2">4Q DLC 출시 · 첫 할인(가을/연말) · 게임스컴 노출 효과</div></div>
+<div class="row"><div class="rl">발생 확률 (자체 추정)</div><div class="rv" style="color:#e8163c">약 50%</div></div>
+</div>
+<div class="sc" style="background:linear-gradient(160deg,rgba(60,40,0,.6),rgba(30,20,0,.4));border:1px solid rgba(245,166,35,.25)"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7a5500,#f5a623)"></div>
+<h4 style="color:#f5a623">⭐ 낙관 시나리오</h4>
+<div class="big" style="color:#f5a623">950만~1,000만장</div>
+<div class="cap">NH(950만)·DS(900만~) 추정치</div>
+<div class="row"><div class="rl">2026년 전사 매출</div><div class="rv" style="color:#f5a623">9,754억 (가이던스 상단)</div></div>
+<div class="row"><div class="rl">전제 조건</div><div class="rt2">DLC 조기 출시 + 대형 할인 + TGA 후보 지명 + 스위치2 발표</div></div>
+<div class="row"><div class="rl">발생 확률 (자체 추정)</div><div class="rv" style="color:#f5a623">약 20%</div></div>
+</div>
+</div>
+<div class="note">📌 <b>4월 대비 시나리오가 바뀐 이유</b> — 기존 인포그래픽(4.30 기준)의 낙관 시나리오는 <b>"중국 2분기 +200만 장"</b>을 핵심 전제로 삼았습니다. 그러나 7월 7일 주주간담회에서 회사가 판호 추진 보류 의사를 밝히면서 이 전제가 제거됐습니다. 대신 <b>실제 판매 실적이 예상보다 강했고(600만/83일)</b>, 1분기 실적이 서프라이즈를 기록해 증권가 추정치 자체가 526만 → 850~950만장으로 대폭 올라간 상태입니다. 즉 <b>"중국 없이도 4월 전망보다 높은 구간"</b>이 현재의 기본값입니다.</div>
+
+<div class="sec-hd">📅 분기별 누적 판매량 로드맵 (2026)</div>
 <div class="card">
-<div style="font-size:14px;font-weight:700;margin-bottom:24px">● 2026년 분기별 누적 판매량 추이 (만 장) · ■ 실적 □ 전망</div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q1 실적<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(3.20~3.31)</span></div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:42px;position:relative;overflow:hidden"><div style="width:34%;height:100%;background:linear-gradient(90deg,#8b0000,#e8163c);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">~500만 장</span></div></div><div style="width:120px;font-size:11px;color:#4cff80;flex-shrink:0">✅ 실적 확인</div></div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q2 기본</div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:38px;overflow:hidden"><div style="width:52%;height:100%;background:linear-gradient(90deg,#1a3a8b,#3498db);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">600~650만</span></div></div><div style="width:120px;font-size:11px;color:#3498db;flex-shrink:0">+100~150만</div></div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q2 낙관<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(中 진출)</span></div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:38px;overflow:hidden"><div style="width:68%;height:100%;background:linear-gradient(90deg,#8b1a00,#e84020);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">700~750만 (中 200만 포함)</span></div></div><div style="width:120px;font-size:11px;color:#e8163c;flex-shrink:0">+200~250만</div></div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q3 기본</div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:38px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,#1a3a8b,#3498db);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">660~700만</span></div></div><div style="width:120px;font-size:11px;color:#3498db;flex-shrink:0">+50~70만</div></div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q3 낙관<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(할인)</span></div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:38px;overflow:hidden"><div style="width:80%;height:100%;background:linear-gradient(90deg,#8b1a00,#e84020);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">800~850만 (여름 할인)</span></div></div><div style="width:120px;font-size:11px;color:#e8163c;flex-shrink:0">+80~100만</div></div>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q4 기본</div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:38px;overflow:hidden"><div style="width:66%;height:100%;background:linear-gradient(90deg,#1a3a8b,#3498db);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">700~750만</span></div></div><div style="width:120px;font-size:11px;color:#3498db;flex-shrink:0">+40~60만</div></div>
-<div style="display:flex;align-items:center;gap:14px"><div style="width:100px;font-size:12px;color:rgba(255,255,255,.6);text-align:right;flex-shrink:0">Q4 낙관<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(DLC+연말)</span></div><div style="flex:1;background:rgba(255,255,255,.06);border-radius:8px;height:42px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,#7a5500,#f5a623);border-radius:8px;display:flex;align-items:center;padding:0 12px"><span style="font-size:13px;font-weight:700">1,000만 장+ (슈퍼 낙관 달성)</span></div></div><div style="width:120px;font-size:11px;color:#f5a623;flex-shrink:0">🏆 천만 달성</div></div>
+<div style="font-size:14px;font-weight:700;margin-bottom:24px">● 분기말 기준 누적 판매량 · <span style="color:#4cff80">■ 확정</span> <span style="color:#3498db">■ 전망</span></div>
+<div class="qbar"><div class="qlab">1Q 확정<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(3.20~3.31)</span></div><div class="qtrack"><div class="qfill" style="width:40%;background:linear-gradient(90deg,#1a5a2a,#27ae60)">약 400만장</div></div><div class="qnote" style="color:#4cff80">✅ 매출 2,665억</div></div>
+<div class="qbar"><div class="qlab">2Q 확정<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(~6.30)</span></div><div class="qtrack"><div class="qfill" style="width:60%;background:linear-gradient(90deg,#1a5a2a,#27ae60)">600만장+ <span style="font-weight:400;opacity:.8">(6.11 발표)</span></div></div><div class="qnote" style="color:#4cff80">✅ 실적 8.11 발표</div></div>
+<div class="qbar"><div class="qlab">3Q 기본<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(~9.30)</span></div><div class="qtrack"><div class="qfill" style="width:70%;background:linear-gradient(90deg,#1a3a8b,#3498db)">680~720만장</div></div><div class="qnote" style="color:#3498db">+80~120만</div></div>
+<div class="qbar"><div class="qlab">3Q 낙관<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(DLC+게임스컴)</span></div><div class="qtrack"><div class="qfill" style="width:77%;background:linear-gradient(90deg,#8b1a00,#e84020)">750~780만장</div></div><div class="qnote" style="color:#e8163c">+150~180만</div></div>
+<div class="qbar"><div class="qlab">4Q 기본<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(~12.31)</span></div><div class="qtrack"><div class="qfill" style="width:84%;background:linear-gradient(90deg,#1a3a8b,#3498db)">800~880만장</div></div><div class="qnote" style="color:#3498db">+120~160만</div></div>
+<div class="qbar"><div class="qlab">4Q 낙관<br><span style="font-size:10px;color:rgba(255,255,255,.35)">(첫 할인+연말)</span></div><div class="qtrack"><div class="qfill" style="width:98%;background:linear-gradient(90deg,#7a5500,#f5a623)">950만~1,000만장 🏆</div></div><div class="qnote" style="color:#f5a623">천만 도전</div></div>
+<div class="note">💡 <b>1Q 확정치가 500만이 아니라 400만인 이유:</b> 500만 장 달성은 4월 15일로 2분기에 해당합니다. 1분기 회계기간(3.20~3.31) 종료 시점의 누적은 약 400만 장 수준이며, 이 물량으로 붉은사막 1분기 매출 2,665억 원이 인식됐습니다 (장당 순인식 매출 약 6.7만 원).</div>
 </div>
+
+<div class="sec-hd">⚡ 드라이버 &amp; 리스크 — 4월 대비 무엇이 바뀌었나</div>
+<div class="dr-grid">
+<div class="card">
+<div style="font-size:14px;font-weight:700;margin-bottom:8px;color:#4cff80">🚀 상승 드라이버</div>
+<div class="dr-item"><div class="dr-ico">📦</div><div><div class="dr-t">유료 DLC (스토리 확장) <span class="st mid">3Q 중 공개 예정</span></div><div class="dr-b">6.2 제작 공식화. 7.7 주주간담회: <b>"기본적으로는 유료 DLC로 검토 중"</b>, "올해 출시 여부와 방향성은 3분기 안에 명확히 밝히겠다". 출시일·가격 모두 미정. 메리츠는 "현 빌드가 실제 개발분의 50% 미만 → 제작기간 짧을 것"으로 낙관.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🎪</div><div><div class="dr-t">게임스컴 2026 (8.26~30) <span class="st on">확정</span></div><div class="dr-b">삼성전자 공동 부스, 시연 PC 30대, 8.24 개발자 패널. DLC 상세 공개의 유력 무대로 관측됩니다 (단, 공식 예고는 없음).</div></div></div>
+<div class="dr-item"><div class="dr-ico">🏷️</div><div><div class="dr-t">첫 할인 카드 <span class="st mid">미사용</span></div><div class="dr-b">출시 후 4.5개월간 정가 $69.99 유지, 여름 할인도 미참여. 가을·연말 세일에서 첫 할인 시 롱테일 반등 여지가 온전히 남아있습니다.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🎮</div><div><div class="dr-t">닌텐도 스위치 2 이식 <span class="st mid">개발 중</span></div><div class="dr-b">7.7 주주간담회: "기본적인 게임플레이는 개발 중". 최적화·QA 미완료로 일정 미확정. 성사 시 신규 플랫폼 수요 확보.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🔗</div><div><div class="dr-t">크로스 프로그레션 <span class="st mid">2차 로드맵 예고</span></div><div class="dr-b">PC ↔ PS5 ↔ Xbox 진행도 연동. 멀티플랫폼 재구매 유도 효과 기대.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🏆</div><div><div class="dr-t">TGA 2026 GOTY 후보 <span class="st off">11월 발표</span></div><div class="dr-b">CGIA 2026 '최고의 인터내셔널 게임' 수상. 다만 메타 77점으로 GOTY 후보 지명에는 회의적 시각이 우세 (역대 최저 후보는 검은신화 오공 81점).</div></div></div>
+</div>
+<div class="card">
+<div style="font-size:14px;font-weight:700;margin-bottom:8px;color:#e8163c">⚠️ 하방 리스크</div>
+<div class="dr-item"><div class="dr-ico">🇨🇳</div><div><div class="dr-t">중국 판호 <span class="st bad">사실상 보류</span></div><div class="dr-b"><b style="color:#e8163c">가장 큰 변화.</b> 7.7 주주간담회에서 허진영 대표가 <b>"판호를 통한 출시가 유의미한 기회라고 판단할 만한 단계는 아니다"</b>라고 발언. 2026년 한국 게임 외자판호 발급 명단에도 없습니다. 4월 낙관 시나리오의 핵심 전제가 사라졌습니다.<br><span style="color:rgba(255,255,255,.32)">※ 다만 7.31~8.3 차이나조이에 TCL과 공동 시연 참가 — 시장 자체를 포기한 것은 아닙니다.</span></div></div></div>
+<div class="dr-item"><div class="dr-ico">📉</div><div><div class="dr-t">2027년 실적 절벽 <span class="st bad">컨센서스</span></div><div class="dr-b">2027F 매출 5,229억(-42.1%), 영업이익 1,883억(<b style="color:#e8163c">-59.9%</b>). S&amp;P Global도 2027년 둔화를 명시적으로 전망. 차기작 도깨비는 <b>2028년 하반기</b> 목표로 <b>2027년은 신작 공백</b>입니다.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🔻</div><div><div class="dr-t">주가 -54% <span class="st bad">진행 중</span></div><div class="dr-b">52주 최고 77,400원 → 8.6 35,350원. 사상 최대 실적에도 하락. 시가총액 약 2.2조. 52주 밴드(29,000~77,400) 하단 13% 지점.</div></div></div>
+<div class="dr-item"><div class="dr-ico">👥</div><div><div class="dr-t">동접 피크 대비 -96% <span class="st mid">완화 중</span></div><div class="dr-b">27.6만 → 약 1.1만. 다만 월 감소율이 -59%→-51%→-43%→-10%로 완만해지며 안정화. 싱글 패키지로서는 정상 범위.</div></div></div>
+<div class="dr-item"><div class="dr-ico">⭐</div><div><div class="dr-t">평론가 점수 77점 <span class="st mid">구조적</span></div><div class="dr-b">유저 평가(8.8/10, 스팀 83%)와 괴리. 롱테일 구간에서 "평점 보고 사는" 신규 구매층 확보에 불리하게 작용합니다.</div></div></div>
+<div class="dr-item"><div class="dr-ico">🎮</div><div><div class="dr-t">멀티플레이 <span class="st off">기술 검토 단계</span></div><div class="dr-b">7.7 주주간담회: "확장 여지는 있으나 서버 구조·밸런스·플랫폼별 안정성 검토가 필요한 중대한 과제". 시기·형태 모두 미확정으로, 2026년 내 기여는 기대하기 어렵습니다.</div></div></div>
+</div>
+</div>
+
 <div class="sec-hd">📆 장기 누적 판매량 로드맵 (2026~2028)</div>
 <div class="card">
-<div style="font-size:14px;font-weight:700;margin-bottom:24px">● 연도별 누적 판매량 전망 비교</div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div style="width:60px;font-size:11px;color:#3498db;font-weight:700;text-align:right;flex-shrink:0">기본</div><div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px"><div style="background:rgba(52,152,219,.18);border:1px solid rgba(52,152,219,.25);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#3498db">526만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2026 / ~4,200억</div></div><div style="background:rgba(52,152,219,.12);border:1px solid rgba(52,152,219,.18);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#3498db">700만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2027 / +DLC</div></div><div style="background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.1);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#3498db">900만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2028 / +롱테일</div></div></div></div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div style="width:60px;font-size:11px;color:#e8163c;font-weight:700;text-align:right;flex-shrink:0">낙관</div><div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px"><div style="background:rgba(232,22,60,.18);border:1px solid rgba(232,22,60,.3);border-radius:8px;padding:12px;text-align:center;box-shadow:0 0 14px rgba(232,22,60,.1)"><div style="font-size:18px;font-weight:900;color:#e8163c">800~850만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2026 / 중국 포함</div></div><div style="background:rgba(232,22,60,.12);border:1px solid rgba(232,22,60,.2);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#e8163c">1,100만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2027 / +멀티플레이</div></div><div style="background:rgba(232,22,60,.07);border:1px solid rgba(232,22,60,.12);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#e8163c">1,400만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2028 / +도깨비 시너지</div></div></div></div>
-<div style="display:flex;align-items:center;gap:12px"><div style="width:60px;font-size:11px;color:#f5a623;font-weight:700;text-align:right;flex-shrink:0">슈퍼↑</div><div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px"><div style="background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.2);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#f5a623">1,000만+</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2026 / GOTY·판호</div></div><div style="background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.13);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#f5a623">1,500만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2027 / +시즌2</div></div><div style="background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.09);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:900;color:#f5a623">2,000만</div><div style="font-size:10px;color:rgba(255,255,255,.35)">2028 / IP화</div></div></div></div>
+<div style="font-size:14px;font-weight:700;margin-bottom:24px">● 연도말 기준 누적 판매량 전망 비교</div>
+<div class="yr-grid"><div class="yr-lab" style="color:#3498db">보수</div><div class="yr-cells">
+<div class="yr-cell" style="background:rgba(52,152,219,.18);border:1px solid rgba(52,152,219,.25)"><div class="yr-v" style="color:#3498db">700~760만</div><div class="yr-c">2026 / 약 8,800억</div></div>
+<div class="yr-cell" style="background:rgba(52,152,219,.12);border:1px solid rgba(52,152,219,.18)"><div class="yr-v" style="color:#3498db">880만</div><div class="yr-c">2027 / DLC 지연</div></div>
+<div class="yr-cell" style="background:rgba(52,152,219,.07);border:1px solid rgba(52,152,219,.1)"><div class="yr-v" style="color:#3498db">1,000만</div><div class="yr-c">2028 / 롱테일만</div></div>
+</div></div>
+<div class="yr-grid"><div class="yr-lab" style="color:#e8163c">기본</div><div class="yr-cells">
+<div class="yr-cell" style="background:rgba(232,22,60,.18);border:1px solid rgba(232,22,60,.3);box-shadow:0 0 14px rgba(232,22,60,.1)"><div class="yr-v" style="color:#e8163c">800~880만</div><div class="yr-c">2026 / 약 9,068억</div></div>
+<div class="yr-cell" style="background:rgba(232,22,60,.12);border:1px solid rgba(232,22,60,.2)"><div class="yr-v" style="color:#e8163c">1,100만</div><div class="yr-c">2027 / +DLC·할인</div></div>
+<div class="yr-cell" style="background:rgba(232,22,60,.07);border:1px solid rgba(232,22,60,.12)"><div class="yr-v" style="color:#e8163c">1,300만</div><div class="yr-c">2028 / +스위치2</div></div>
+</div></div>
+<div class="yr-grid" style="margin-bottom:0"><div class="yr-lab" style="color:#f5a623">낙관</div><div class="yr-cells">
+<div class="yr-cell" style="background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.2)"><div class="yr-v" style="color:#f5a623">950만~1,000만</div><div class="yr-c">2026 / 9,754억</div></div>
+<div class="yr-cell" style="background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.13)"><div class="yr-v" style="color:#f5a623">1,400만</div><div class="yr-c">2027 / +멀티·판호</div></div>
+<div class="yr-cell" style="background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.09)"><div class="yr-v" style="color:#f5a623">1,800만</div><div class="yr-c">2028 / +도깨비 시너지</div></div>
+</div></div>
+<div class="note red">🔻 <b>2027년 실적 절벽은 판매량과 별개 문제입니다.</b> 누적 판매량은 계속 늘어나도, <b>매출 인식은 신규 판매 시점</b>에 집중됩니다. 컨센서스 2027F 매출 5,229억(-42.1%) / 영업이익 1,883억(-59.9%)은 붉은사막의 신규 판매 감소를 반영한 수치입니다. 이 공백을 메울 수 있는 것은 <b>DLC 매출 규모</b>뿐이며, 도깨비(2028 하반기)는 2027년에 아무 기여를 하지 못합니다. 삼성증권이 HOLD를 유지하는 이유가 정확히 이것입니다.</div>
 </div>
+
 <div class="sec-hd">📌 전망 핵심 요약</div>
 <div class="card" style="background:linear-gradient(135deg,rgba(20,5,10,.6),rgba(10,5,20,.4));border-color:rgba(232,22,60,.2)">
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-<div style="text-align:center;padding:16px"><div style="font-size:40px;margin-bottom:10px">🎯</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">현재 (2026.04.30)</div><div style="font-size:28px;font-weight:900;color:#e8163c;margin-bottom:4px">500만 장</div><div style="font-size:11px;color:rgba(255,255,255,.4)">글로벌 누적 (출시 26일)</div></div>
-<div style="text-align:center;padding:16px;border-left:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)"><div style="font-size:40px;margin-bottom:10px">📊</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">2026년 연간 (컨센서스)</div><div style="font-size:28px;font-weight:900;color:#f5a623;margin-bottom:4px">526~850만</div><div style="font-size:11px;color:rgba(255,255,255,.4)">기본~낙관 범위</div></div>
-<div style="text-align:center;padding:16px"><div style="font-size:40px;margin-bottom:10px">🚀</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">장기 잠재치 (3~4년)</div><div style="font-size:28px;font-weight:900;color:#4cff80;margin-bottom:4px">900만~1,500만</div><div style="font-size:11px;color:rgba(255,255,255,.4)">중국·DLC·멀티 포함</div></div>
+<div class="sum-grid">
+<div style="text-align:center;padding:16px"><div style="font-size:36px;margin-bottom:10px">🎯</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">현재 (공식 최신)</div><div style="font-size:26px;font-weight:900;color:#e8163c;margin-bottom:4px">600만장+</div><div style="font-size:11px;color:rgba(255,255,255,.4)">2026.06.11 · 출시 83일</div></div>
+<div style="text-align:center;padding:16px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:36px;margin-bottom:10px">📊</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">2026년 연간 (기본)</div><div style="font-size:26px;font-weight:900;color:#f5a623;margin-bottom:4px">800~880만</div><div style="font-size:11px;color:rgba(255,255,255,.4)">증권가 범위 631~950만</div></div>
+<div style="text-align:center;padding:16px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:36px;margin-bottom:10px">🚀</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">장기 잠재치 (3년)</div><div style="font-size:26px;font-weight:900;color:#4cff80;margin-bottom:4px">1,000~1,800만</div><div style="font-size:11px;color:rgba(255,255,255,.4)">DLC·할인·스위치2 포함</div></div>
+<div style="text-align:center;padding:16px;border-left:1px solid rgba(255,255,255,.07)"><div style="font-size:36px;margin-bottom:10px">⚠️</div><div style="font-size:13px;font-weight:700;margin-bottom:8px">2027 영업이익</div><div style="font-size:26px;font-weight:900;color:#e8163c;margin-bottom:4px">-59.9%</div><div style="font-size:11px;color:rgba(255,255,255,.4)">1,883억 · 신작 공백</div></div>
 </div>
-<div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);font-size:12px;color:rgba(255,255,255,.4);text-align:center">⚠️ 본 전망은 공개된 증권사 리포트 및 언론 보도 기반이며, 투자 판단의 근거로 활용하지 마십시오.</div>
+<div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);font-size:12px;color:rgba(255,255,255,.4);text-align:center;line-height:1.8">⚠️ 본 전망은 공개된 증권사 리포트 및 언론 보도를 기반으로 재구성한 것이며, 시나리오별 확률과 D+140 추정치는 자체 산출값입니다.<br><b style="color:rgba(255,255,255,.6)">투자 판단의 근거로 활용하지 마십시오.</b></div>
 </div>
-</div></div>
-<div style="text-align:center;padding:28px;font-size:11px;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.05);margin-top:40px">📌 출처: NH투자증권, 메리츠증권, 삼성증권, DS투자증권, 유진투자증권 | 인벤, 지디넷코리아, 머니투데이 | 기준일: 2026.04.30</div>
+
+</div>
+<div style="text-align:center;padding:28px;font-size:11px;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.05);margin-top:40px;line-height:1.9">📌 출처: NH투자증권, 메리츠증권, 삼성증권, DS투자증권, 유진투자증권, 유안타증권 | 펄어비스 IR Book(KRX KIND), 인벤, ZDNet Korea, 머니투데이, 디지털데일리, 뉴스퀘스트, 파이낸셜투데이, S&amp;P Global<br>기준일: 2026.08.07 | 최신 공식 판매량: 600만 장(2026.06.11) | 최신 판매량 추정 리포트: 2026.05.13</div>
 </body></html>

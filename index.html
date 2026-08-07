@@ -7,12 +7,17 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Noto Sans KR',sans-serif; background:#0a0a0f; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; }
-  .hero { text-align:center; margin-bottom:60px; }
+  body { font-family:'Noto Sans KR',sans-serif; background:#0a0a0f; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:56px 20px; }
+  .hero { text-align:center; margin-bottom:40px; }
   .badge { display:inline-block; background:linear-gradient(90deg,#c0392b,#e74c3c); color:#fff; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:20px; }
   h1 { font-size:clamp(24px,5vw,48px); font-weight:900; line-height:1.2; margin-bottom:12px; }
   h1 em { color:#e74c3c; font-style:normal; }
-  .sub { font-size:14px; color:rgba(255,255,255,0.45); }
+  .sub { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.7; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:860px; width:100%; margin-bottom:36px; }
+  @media(max-width:640px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+  .stat { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:18px 14px; text-align:center; }
+  .stat-v { font-size:clamp(18px,3vw,24px); font-weight:900; color:#e74c3c; line-height:1.1; margin-bottom:5px; }
+  .stat-l { font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; }
   .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:860px; width:100%; }
   @media(max-width:640px){ .cards{ grid-template-columns:1fr; } }
   .card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:36px 32px; text-decoration:none; color:#fff; transition:transform .2s,border-color .2s,box-shadow .2s; position:relative; overflow:hidden; }
@@ -24,31 +29,51 @@
   .card-tags { display:flex; flex-wrap:wrap; gap:8px; }
   .tag { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); font-size:11px; color:rgba(255,255,255,0.5); padding:3px 10px; border-radius:20px; }
   .arrow { position:absolute; right:24px; bottom:24px; font-size:20px; opacity:0.4; }
-  .footer { margin-top:48px; font-size:12px; color:rgba(255,255,255,0.2); text-align:center; }
+  .alert { max-width:860px; width:100%; margin-top:32px; background:rgba(243,156,18,.07); border:1px solid rgba(243,156,18,.22); border-radius:14px; padding:16px 20px; font-size:12px; color:rgba(255,255,255,.55); line-height:1.8; }
+  .alert b { color:#f39c12; }
+  .footer { margin-top:36px; font-size:12px; color:rgba(255,255,255,0.2); text-align:center; line-height:1.8; }
 </style>
 </head>
 <body>
 <div class="hero">
-  <div class="badge">📊 Infographic Series</div>
+  <div class="badge">📊 Infographic Series · Updated</div>
   <h1>붉은사막 <em>(Crimson Desert)</em><br>판매량 분석 시리즈</h1>
-  <p class="sub">Pearl Abyss · 2026.03.20 출시 · 데이터 기준일: 2026.04.30</p>
+  <p class="sub">Pearl Abyss · 2026.03.20 출시 · <b style="color:rgba(255,255,255,.7)">데이터 기준일: 2026.08.07 (D+140)</b></p>
 </div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-v">600만+</div><div class="stat-l">글로벌 누적 판매<br>(2026.06.11 공식)</div></div>
+  <div class="stat"><div class="stat-v">3,285억</div><div class="stat-l">1분기 매출<br>창사 이래 최대</div></div>
+  <div class="stat"><div class="stat-v">2,771억</div><div class="stat-l">스팀 단독 매출<br>할인 0회 (2026.07.27)</div></div>
+  <div class="stat"><div class="stat-v">27.6만</div><div class="stat-l">스팀 최고 동접<br>(2026.03.29)</div></div>
+</div>
+
 <div class="cards">
   <a class="card" href="infographic1.html" style="--accent:linear-gradient(90deg,#8b0000,#e74c3c)">
     <div class="card-icon">📈</div>
     <div class="card-title">판매량 추이 인포그래픽</div>
-    <div class="card-desc">출시 후 D+26일까지 실제 판매 마일스톤, 스팀 지표, 타임라인, 경쟁작 비교, 핵심 분석을 담은 기본 인포그래픽입니다.</div>
-    <div class="card-tags"><span class="tag">📊 판매 마일스톤</span><span class="tag">⏱ 타임라인</span><span class="tag">🎮 스팀 지표</span><span class="tag">🏆 경쟁 비교</span></div>
+    <div class="card-desc">출시 D+140까지의 판매 마일스톤, 판매 속도 둔화 곡선, 스팀 동접·평가 추이, 1분기 실적, 글로벌 순위, 핵심 분석을 담았습니다.</div>
+    <div class="card-tags"><span class="tag">📊 D+140 실적</span><span class="tag">📉 둔화 곡선</span><span class="tag">🎮 스팀 지표</span><span class="tag">💰 1Q 실적</span></div>
     <div class="arrow">→</div>
   </a>
   <a class="card" href="infographic2.html" style="--accent:linear-gradient(90deg,#7a5500,#f5a623)">
     <div class="card-icon">🔭</div>
     <div class="card-title">판매량 전망 심층 분석</div>
-    <div class="card-desc">5개 증권사 리포트, 3대 시나리오, 분기별 로드맵, 드라이버/리스크, 2026~2028 장기 전망 심층 분석입니다.</div>
-    <div class="card-tags"><span class="tag">🏦 증권사 5사</span><span class="tag">🎯 3대 시나리오</span><span class="tag">📅 분기 로드맵</span><span class="tag">⚡ 드라이버/리스크</span></div>
+    <div class="card-desc">증권사 6곳 리포트, 하반기 3대 시나리오, 분기별 로드맵, 드라이버·리스크 재점검, 2026~2028 장기 전망과 2027 실적 절벽 분석입니다.</div>
+    <div class="card-tags"><span class="tag">🏦 증권사 6사</span><span class="tag">🎯 3대 시나리오</span><span class="tag">⚡ 드라이버/리스크</span><span class="tag">📉 2027 절벽</span></div>
     <div class="arrow">→</div>
   </a>
 </div>
-<div class="footer">📌 공개된 언론 보도 및 증권사 리포트 기반 | 기준일: 2026.04.30</div>
+
+<div class="alert">
+  🔄 <b>2026.08.07 업데이트 주요 변경사항</b><br>
+  · 누적 판매량 <b>500만 → 600만 장</b> (2026.06.11 공식 발표, 출시 83일)<br>
+  · 중국 판호가 <b>사실상 보류</b>됐습니다 — 7월 7일 주주간담회에서 허진영 대표가 "판호를 통한 출시가 유의미한 기회라고 판단할 만한 단계는 아니다"라고 밝혀, 기존 낙관 시나리오의 핵심 전제가 제거됐습니다<br>
+  · 증권가 판매량 전망이 <b>526만 → 850~950만 장</b>으로 대폭 상향됐습니다 (1분기 실적 서프라이즈 반영, 2026.05.13 기준)<br>
+  · <b>2027년 실적 절벽</b> 우려가 새로운 핵심 쟁점으로 부상했습니다 (컨센서스 영업이익 -59.9%)<br>
+  · 다음 분기점: <b>2026년 8월 중순 2분기 실적발표</b> · 게임스컴 2026 (8.26~30)
+</div>
+
+<div class="footer">📌 공개된 기업 IR 자료, 언론 보도, 증권사 리포트 기반 | 기준일: 2026.08.07<br>최신 공식 판매량은 600만 장(2026.06.11)이며, 이후 수치는 추정치입니다.</div>
 </body>
 </html>
