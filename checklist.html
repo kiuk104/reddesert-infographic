@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="생존노트">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-<script>try{var st=localStorage.getItem('cd-theme');if(st)document.documentElement.setAttribute('data-theme',st);}catch(e){}</script>
+<script>try{var st=localStorage.getItem('cd-theme');if(st)document.documentElement.setAttribute('data-theme',st);var fs=localStorage.getItem('cd-fs');if(fs)document.documentElement.style.setProperty('--fs',fs);}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 :root{
@@ -44,6 +44,18 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 h1{font-family:var(--f-disp);font-weight:700;font-size:1.55rem;margin:0;text-wrap:balance}
 .btn{flex:none;background:var(--surf);border:1px solid var(--line2);color:var(--ink2);border-radius:7px;padding:6px 11px;font:inherit;font-size:12.5px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
 .btn:hover{border-color:var(--crimson);color:var(--crimson)}
+.btn.icon{width:36px;height:32px;padding:0;justify-content:center}
+.btn[aria-expanded="true"]{border-color:var(--crimson);color:var(--crimson)}
+.setpanel{position:fixed;z-index:30;right:16px;top:calc(env(safe-area-inset-top,0px) + 56px);width:min(340px,calc(100vw - 32px));background:var(--surf);border:1px solid var(--line2);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:14px 16px;display:grid;gap:14px}
+.sp-row{display:grid;gap:7px}
+.sp-lab{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.seg{display:flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;background:transparent;color:var(--ink2);font:inherit;font-size:13px;padding:8px 4px;cursor:pointer;white-space:nowrap}
+.seg button+button{border-left:1px solid var(--line2)}
+.seg button[aria-pressed="true"]{background:var(--crimson);color:#fff}
+.sp-note{margin:0;font-size:11.5px;color:var(--muted)}
+.zoomed{zoom:var(--fs,1)}
+header.top h1,header.top .stats{zoom:var(--fs,1)}
 .btn.primary{background:var(--abyss);border-color:var(--abyss);color:#fff}
 .btn.primary:hover{color:#fff;filter:brightness(1.08)}
 .acct{display:inline-flex;align-items:center;gap:8px;min-width:0}
@@ -111,7 +123,7 @@ footer a{color:var(--abyss)}
       <button class="btn primary" id="loginBtn" hidden>구글로 로그인</button>
       <button class="btn" id="logoutBtn" hidden>로그아웃</button>
     </span>
-    <button class="btn" id="themeBtn" aria-label="테마 전환">◐</button>
+    <button class="btn icon" id="setBtn" aria-label="설정" aria-haspopup="dialog" aria-expanded="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
   </div>
   <h1>어비스 수집 체크리스트</h1>
   <div class="stats">
@@ -128,6 +140,14 @@ footer a{color:var(--abyss)}
   </div>
 </header>
 
+<div class="setpanel" id="setPanel" role="dialog" aria-label="설정" hidden>
+  <div class="sp-row"><span class="sp-lab">테마</span>
+    <div class="seg" id="segTheme" role="group" aria-label="테마"><button data-v="system">시스템</button><button data-v="light">라이트</button><button data-v="dark">다크</button></div></div>
+  <div class="sp-row"><span class="sp-lab">글자 크기</span>
+    <div class="seg" id="segFs" role="group" aria-label="글자 크기"><button data-v="0.9">작게</button><button data-v="1">보통</button><button data-v="1.12">크게</button><button data-v="1.25">아주 크게</button></div></div>
+  <p class="sp-note">공략집과 같은 설정을 써요. 이 기기에 저장돼요.</p>
+</div>
+<div class="zoomed">
 <div class="elements" id="elements"></div>
 
 <div class="legend">
@@ -152,6 +172,7 @@ footer a{color:var(--abyss)}
   <div>한글 이름은 인벤 공략 글 제목 기준이라 게임 표기와 조금 다를 수 있어요. 영어로 적힌 기어는 영문 공략(mapmaster) 기준. 차원의 뼈대는 챕터 12와 어비스 39곳을 끝내야 열려요. 자세한 설명은 공략집 Q17·Q25·Q26.</div>
   <div>출처: <a href="https://www.inven.co.kr/board/crimson/6511?name=subjcont&amp;keyword=%EC%96%B4%EB%B9%84%EC%8A%A4%20-" target="_blank" rel="noopener">붉은사막 인벤 어비스 공략</a> · <a href="https://www.powerpyx.com/crimson-desert-all-abyss-restoration-puzzle-locations-solutions/" target="_blank" rel="noopener">PowerPyx</a> · <a href="https://raiderking.com/crimson-desert-all-abyss-restoration-challenges-puzzle-solutions-and-locations/" target="_blank" rel="noopener">Raider King</a> · <a href="https://mapmaster.io/games/crimson-desert/guides/Abyss%20Gear" target="_blank" rel="noopener">mapmaster</a></div>
 </footer>
+</div>
 </div>
 
 <script>
@@ -290,12 +311,19 @@ document.getElementById("loadBtn").addEventListener("click",()=>{
   checked={}; ids.forEach(i=>checked[i]=true); save(); render();
   msg.textContent="불러왔어요 — "+ids.length+"개 체크";
 });
-const R=document.documentElement;
-document.getElementById("themeBtn").addEventListener("click",()=>{
-  const cur=R.getAttribute("data-theme");
-  const next=cur==="dark"?"light":cur==="light"?"dark":(matchMedia("(prefers-color-scheme: dark)").matches?"light":"dark");
-  R.setAttribute("data-theme",next); try{localStorage.setItem("cd-theme",next);}catch(e){}
-});
+const R=document.documentElement, setBtn=document.getElementById("setBtn"), panel=document.getElementById("setPanel");
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsPut(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+function mark(seg,val){document.querySelectorAll("#"+seg+" button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===val)));}
+function applyTheme(v){ if(v==="system"){R.removeAttribute("data-theme");lsPut("cd-theme",null);} else {R.setAttribute("data-theme",v);lsPut("cd-theme",v);} mark("segTheme",v); }
+function applyFs(v){ R.style.setProperty("--fs",v); lsPut("cd-fs",v==="1"?null:v); mark("segFs",v); }
+mark("segTheme",lsGet("cd-theme")||"system"); mark("segFs",lsGet("cd-fs")||"1");
+document.getElementById("segTheme").addEventListener("click",e=>{const v=e.target.dataset&&e.target.dataset.v; if(v)applyTheme(v);});
+document.getElementById("segFs").addEventListener("click",e=>{const v=e.target.dataset&&e.target.dataset.v; if(v)applyFs(v);});
+function togglePanel(open){panel.hidden=!open; setBtn.setAttribute("aria-expanded",String(open));}
+setBtn.addEventListener("click",e=>{e.stopPropagation(); togglePanel(panel.hidden);});
+document.addEventListener("click",e=>{ if(!panel.hidden && !panel.contains(e.target) && !setBtn.contains(e.target)) togglePanel(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !panel.hidden){togglePanel(false); setBtn.focus();} });
 render();
 </script>
 <script type="module">

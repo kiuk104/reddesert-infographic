@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="붉은사막 개인 공략 노트 — 기술 세팅과 퀘스트 진행 기록">
 <title>붉은사막 생존 노트</title>
+<script>try{var _t=localStorage.getItem('cd-theme');if(_t)document.documentElement.setAttribute('data-theme',_t);var _f=localStorage.getItem('cd-fs');if(_f)document.documentElement.style.setProperty('--fs',_f);}catch(e){}</script>
+
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16120e" media="(prefers-color-scheme: dark)">
@@ -71,18 +73,37 @@ a:hover{border-bottom-color:var(--abyss)}
 
 .main{min-width:0;padding:0 0 80px}
 .topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:color-mix(in srgb,var(--bg) 93%,transparent);
- backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:11px 28px;
- display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surf);
- border:1px solid var(--line2);border-radius:7px;padding:7px 11px}
+ backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 28px;
+ display:flex;gap:8px;align-items:center;flex-wrap:nowrap}
+.tb-sp{flex:1}
+[hidden]{display:none!important}
+.search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.search{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surf);
+ border:1px solid var(--line2);border-radius:7px;padding:5px 6px 5px 11px}
 .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;outline:none}
 .search input::placeholder{color:var(--muted)}
-.search svg{flex:none;stroke:var(--muted)}
+.search svg{flex:none;color:var(--muted)}
+.xbtn{flex:none;border:0;background:transparent;color:var(--muted);font-size:14px;width:30px;height:30px;border-radius:6px;cursor:pointer}
+.xbtn:hover{color:var(--crimson)}
+.topbar.searching #searchBtn,.topbar.searching #abyssBtn,.topbar.searching .tb-sp{display:none}
 .btn{flex:none;background:var(--surf);border:1px solid var(--line2);color:var(--ink2);border-radius:7px;
- padding:7px 12px;font:inherit;font-size:12.5px;cursor:pointer}
-.btn:hover{border-color:var(--crimson);color:var(--crimson)}
-a.btn{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
-#menuBtn{display:none}
+ padding:7px 12px;font:inherit;font-size:12.5px;cursor:pointer;line-height:1.2}
+.btn.icon{width:36px;height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.btn:hover,.btn[aria-expanded="true"]{border-color:var(--crimson);color:var(--crimson)}
+a.btn{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;height:34px}
+#menuBtn{display:none;height:34px;white-space:nowrap}
+.setpanel{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right,0px));top:calc(env(safe-area-inset-top,0px) + 60px);
+ width:min(340px,calc(100vw - 32px));background:var(--surf);border:1px solid var(--line2);border-radius:10px;
+ box-shadow:0 10px 30px rgba(0,0,0,.25);padding:14px 16px;display:grid;gap:14px}
+.sp-row{display:grid;gap:7px}
+.sp-lab{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.seg{display:flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;background:transparent;color:var(--ink2);font:inherit;font-size:13px;padding:8px 4px;cursor:pointer;white-space:nowrap}
+.seg button+button{border-left:1px solid var(--line2)}
+.seg button[aria-pressed="true"]{background:var(--crimson);color:#fff}
+.sp-note{margin:0;font-size:11.5px;color:var(--muted)}
+.btn:focus-visible,.seg button:focus-visible,.xbtn:focus-visible{outline:2px solid var(--abyss);outline-offset:2px}
+.wrap{zoom:var(--fs,1)}
 .hits{font-family:var(--f-mono);font-size:12px;color:var(--muted);flex:none}
 
 .wrap{padding:0 28px;max-width:940px}
@@ -148,6 +169,7 @@ aside.note{border-left-color:var(--line2)}
   .side.open{transform:none}
   #menuBtn{display:block}
   .wrap,.topbar{padding-left:16px;padding-right:16px}
+  .topbar{gap:6px}
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:15;display:none}
   .scrim.on{display:block}
 }
@@ -231,15 +253,29 @@ aside.note{border-left-color:var(--line2)}
 <a class="nav1" href="#s66">참고 자료</a>  </nav>
 </aside>
 <main class="main">
-  <div class="topbar">
+  <div class="topbar" id="topbar">
     <button class="btn" id="menuBtn" aria-label="목차 열기">☰ 목차</button>
-    <label class="search">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="검색 — 담금질, 어비스, 발차기, 혈석…" autocomplete="off">
-    </label>
-    <span class="hits" id="hits"></span>
+    <span class="tb-sp"></span>
+    <div class="search" id="searchBox" hidden>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="검색 — 담금질, 어비스, 혈석…" autocomplete="off">
+      <span class="hits" id="hits"></span>
+      <button class="xbtn" id="searchClose" aria-label="검색 닫기">✕</button>
+    </div>
+    <button class="btn icon" id="searchBtn" aria-label="검색" title="검색 ( / )"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
     <a class="btn" id="abyssBtn" href="checklist.html" title="어비스 수집 체크리스트">✓ 어비스 체크</a>
-    <button class="btn" id="themeBtn" aria-label="테마 전환">◐</button>
+    <button class="btn icon" id="setBtn" aria-label="설정" aria-haspopup="dialog" aria-expanded="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  </div>
+  <div class="setpanel" id="setPanel" role="dialog" aria-label="설정" hidden>
+    <div class="sp-row"><span class="sp-lab">테마</span>
+      <div class="seg" id="segTheme" role="group" aria-label="테마">
+        <button data-v="system">시스템</button><button data-v="light">라이트</button><button data-v="dark">다크</button>
+      </div></div>
+    <div class="sp-row"><span class="sp-lab">글자 크기</span>
+      <div class="seg" id="segFs" role="group" aria-label="글자 크기">
+        <button data-v="0.9">작게</button><button data-v="1">보통</button><button data-v="1.12">크게</button><button data-v="1.25">아주 크게</button>
+      </div></div>
+    <p class="sp-note">설정은 이 기기에 저장돼요.</p>
   </div>
   <div class="wrap">
     <div class="status">
@@ -353,7 +389,7 @@ aside.note{border-left-color:var(--line2)}
   q.addEventListener('input',filter);
   q.addEventListener('keydown',function(e){ if(e.key==='Escape'){q.value='';filter();q.blur();} });
   document.addEventListener('keydown',function(e){
-    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}
+    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();sbox.hidden=false;document.getElementById('topbar').classList.add('searching');q.focus();}
   });
 
   // scrollspy
@@ -372,16 +408,29 @@ aside.note{border-left-color:var(--line2)}
     requestAnimationFrame(function(){spy();tick=false;}); },{passive:true});
   spy();
 
-  // theme
-  var tb=document.getElementById('themeBtn'), R=document.documentElement;
-  try{ var st=localStorage.getItem('cd-theme'); if(st)R.setAttribute('data-theme',st); }catch(e){}
-  tb.addEventListener('click',function(){
-    var cur=R.getAttribute('data-theme');
-    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
-      : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
-    R.setAttribute('data-theme',next);
-    try{localStorage.setItem('cd-theme',next)}catch(e){}
-  });
+  // search (icon → expands)
+  var tbar=document.getElementById('topbar'), sbox=document.getElementById('searchBox'),
+      sbtn=document.getElementById('searchBtn');
+  function openSearch(){ sbox.hidden=false; tbar.classList.add('searching'); q.focus(); }
+  function closeSearch(){ q.value=''; filter(); sbox.hidden=true; tbar.classList.remove('searching'); sbtn.focus(); }
+  sbtn.addEventListener('click',openSearch);
+  document.getElementById('searchClose').addEventListener('click',closeSearch);
+  q.addEventListener('blur',function(){ setTimeout(function(){ if(!q.value.trim() && document.activeElement!==q && !sbox.contains(document.activeElement)){ sbox.hidden=true; tbar.classList.remove('searching'); } },150); });
+
+  // settings: theme + font size
+  var R=document.documentElement, setBtn=document.getElementById('setBtn'), panel=document.getElementById('setPanel');
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function put(k,v){try{ v==null?localStorage.removeItem(k):localStorage.setItem(k,v) }catch(e){}}
+  function mark(seg,val){ [].forEach.call(document.querySelectorAll('#'+seg+' button'),function(b){b.setAttribute('aria-pressed',String(b.dataset.v===val))}); }
+  function applyTheme(v){ if(v==='system'){R.removeAttribute('data-theme');put('cd-theme',null);} else {R.setAttribute('data-theme',v);put('cd-theme',v);} mark('segTheme',v); }
+  function applyFs(v){ R.style.setProperty('--fs',v); put('cd-fs',v==='1'?null:v); mark('segFs',v); }
+  mark('segTheme', get('cd-theme')||'system'); mark('segFs', get('cd-fs')||'1');
+  document.getElementById('segTheme').addEventListener('click',function(e){ var v=e.target.dataset&&e.target.dataset.v; if(v)applyTheme(v); });
+  document.getElementById('segFs').addEventListener('click',function(e){ var v=e.target.dataset&&e.target.dataset.v; if(v)applyFs(v); });
+  function togglePanel(open){ panel.hidden=!open; setBtn.setAttribute('aria-expanded',String(open)); }
+  setBtn.addEventListener('click',function(e){ e.stopPropagation(); togglePanel(panel.hidden); });
+  document.addEventListener('click',function(e){ if(!panel.hidden && !panel.contains(e.target) && e.target!==setBtn) togglePanel(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !panel.hidden){ togglePanel(false); setBtn.focus(); } });
 
   // mobile drawer
   function close(){side.classList.remove('open');scrim.classList.remove('on');}
