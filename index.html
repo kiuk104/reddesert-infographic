@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>붉은사막 판매량 분석 인포그래픽</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16120e" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="생존노트">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -70,10 +80,10 @@
     <div class="card-tags"><span class="tag">🧩 퀘스트 공략</span><span class="tag">⚔️ 스킬 추천</span><span class="tag">🔍 검색</span><span class="tag">📱 모바일</span></div>
     <div class="arrow">→</div>
   </a>
-  <a class="card" href="https://claude.ai/artifact/Rvkx7k8VqZAcaRH5ecqRfR" target="_blank" rel="noopener" style="--accent:linear-gradient(90deg,#3e8fc4,#b42a2a)">
+  <a class="card" href="checklist.html" style="--accent:linear-gradient(90deg,#3e8fc4,#b42a2a)">
     <div class="card-icon">✅</div>
     <div class="card-title">어비스 수집 체크리스트</div>
-    <div class="card-desc">어비스 40곳 복구, 원소 능력 4종(벼락·빙결·화염·바람), 상자·어비스 기어를 탑별로 체크합니다. 체크는 자동 저장되고 PC·모바일에서 동기화됩니다.</div>
+    <div class="card-desc">어비스 40곳 복구, 원소 능력 4종(벼락·빙결·화염·바람), 상자·어비스 기어를 탑별로 체크합니다. 체크는 브라우저에 자동 저장되고, 진행 코드로 PC·모바일 간에 옮길 수 있습니다.</div>
     <div class="card-tags"><span class="tag">🌀 어비스 40</span><span class="tag">⚡ 원소 4종</span><span class="tag">💎 어비스 기어</span><span class="tag">☑️ 자동 저장</span></div>
     <div class="arrow">→</div>
   </a>
@@ -89,5 +99,6 @@
 </div>
 
 <div class="footer">📌 공개된 기업 IR 자료, 언론 보도, 증권사 리포트 기반 | 기준일: 2026.09.05<br>최신 공식 판매량은 600만 장(2026.06.11)이며, 이후 수치는 추정치입니다. 2Q 인식 판매량 211만 장은 회사 공식 수치입니다.</div>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "붉은사막 생존노트",
+  "short_name": "생존노트",
+  "description": "붉은사막 개인 공략 노트와 어비스 수집 체크리스트",
+  "lang": "ko",
+  "id": "./guide.html",
+  "start_url": "./guide.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#16120e",
+  "theme_color": "#16120e",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "어비스 체크리스트", "short_name": "체크리스트", "url": "./checklist.html", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]}
+  ]
+}
