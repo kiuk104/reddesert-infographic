@@ -381,13 +381,13 @@ else {
       const merged = (!snap.exists() || fresh) ? {...cloud,...local} : cloud;
       CL.set(merged);
       if(!snap.exists() || Object.keys(merged).length!==Object.keys(cloud).length){
-        await F.setDoc(ref,{checked:merged,updatedAt:F.serverTimestamp()});
+        await F.setDoc(ref,{checked:merged,updatedAt:F.serverTimestamp()},{mergeFields:["checked","updatedAt"]});
       }
     }catch(e){ status("동기화 실패: "+(e.code||e.message),"err"); return; }
     CL.setCloudSave((obj)=>{
       clearTimeout(timer); status("저장 중…");
       timer=setTimeout(()=>{ const data={checked:{...obj},updatedAt:F.serverTimestamp()};
-        writing=writing.then(()=>F.setDoc(ref,data)).then(()=>status("☁ 동기화됨","on")).catch(e=>status("저장 실패: "+(e.code||e.message),"err")); },400);
+        writing=writing.then(()=>F.setDoc(ref,data,{mergeFields:["checked","updatedAt"]})).then(()=>status("☁ 동기화됨","on")).catch(e=>status("저장 실패: "+(e.code||e.message),"err")); },400);
     });
     unsub=F.onSnapshot(ref,(snap)=>{
       if(snap.metadata.hasPendingWrites) return;

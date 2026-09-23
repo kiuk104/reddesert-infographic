@@ -111,6 +111,29 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;white-space:no
 .sp-note{margin:0;font-size:11.5px;color:var(--muted)}
 .btn:focus-visible,.seg button:focus-visible,.xbtn:focus-visible{outline:2px solid var(--abyss);outline-offset:2px}
 .wrap{zoom:var(--fs,1)}
+.topbar.searching #bmBtn{display:none}
+#bmBtn{position:relative}
+.bm-count{position:absolute;top:-6px;right:-6px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--crimson);color:#fff;font:600 10.5px/17px var(--f-mono);text-align:center}
+.bmpanel{gap:8px;max-height:min(70vh,560px);overflow:auto}
+.bm-hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.bm-hd b{font-family:var(--f-disp);font-size:15px}
+.bm-sync{font-size:11.5px;color:var(--muted)}
+.bm-sync.on{color:var(--abyss)}
+.bm-list{list-style:none;margin:0;padding:0;display:grid}
+.bm-list li{display:flex;align-items:center;gap:4px;border-top:1px solid var(--line)}
+.bm-list li:first-child{border-top:0}
+.bm-list a{flex:1;min-width:0;border:0;padding:9px 2px;color:var(--ink);font-size:13.5px;line-height:1.4}
+.bm-list a:hover{color:var(--crimson)}
+.bm-list .bm-where{display:block;font-size:11px;color:var(--muted)}
+.bm-del{flex:none;border:0;background:transparent;color:var(--muted);width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:13px}
+.bm-del:hover{color:var(--crimson)}
+.bmk{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-left:6px;width:28px;height:28px;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:17px;line-height:1;cursor:pointer;font-family:var(--f-body);opacity:.55}
+.bmk:hover,.bmk:focus-visible{opacity:1;color:var(--amber)}
+.bmk.on{opacity:1;color:var(--amber)}
+.bm-flash{animation:bmflash 1.4s ease}
+@keyframes bmflash{0%,40%{background:var(--amber-soft)}100%{background:transparent}}
+@media (prefers-reduced-motion:reduce){.bm-flash{animation:none}}
+
 .hits{font-family:var(--f-mono);font-size:12px;color:var(--muted);flex:none}
 
 .wrap{padding:0 28px;max-width:940px}
@@ -269,9 +292,15 @@ aside.note{border-left-color:var(--line2)}
       <span class="hits" id="hits"></span>
       <button class="xbtn" id="searchClose" aria-label="검색 닫기">✕</button>
     </div>
+    <button class="btn icon" id="bmBtn" aria-label="북마크" aria-haspopup="dialog" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg><span class="bm-count" id="bmCount" hidden></span></button>
     <button class="btn icon" id="searchBtn" aria-label="검색" title="검색 ( / )"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
     <a class="btn" id="abyssBtn" href="checklist.html" title="어비스 수집 체크리스트">✓ 어비스 체크</a>
     <button class="btn icon" id="setBtn" aria-label="설정" aria-haspopup="dialog" aria-expanded="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  </div>
+  <div class="setpanel bmpanel" id="bmPanel" role="dialog" aria-label="북마크" hidden>
+    <div class="bm-hd"><b>북마크</b><span class="bm-sync" id="bmSync">이 기기에 저장</span></div>
+    <ul class="bm-list" id="bmList"></ul>
+    <p class="sp-note" id="bmEmpty">제목 옆 <b>☆</b>를 누르면 여기에 저장돼요.</p>
   </div>
   <div class="setpanel" id="setPanel" role="dialog" aria-label="설정" hidden>
     <div class="sp-row"><span class="sp-lab">테마</span>
@@ -503,9 +532,64 @@ aside.note{border-left-color:var(--line2)}
   document.getElementById('segTheme').addEventListener('click',function(e){ var v=e.target.dataset&&e.target.dataset.v; if(v)applyTheme(v); });
   document.getElementById('segFs').addEventListener('click',function(e){ var v=e.target.dataset&&e.target.dataset.v; if(v)applyFs(v); });
   function togglePanel(open){ panel.hidden=!open; setBtn.setAttribute('aria-expanded',String(open)); }
-  setBtn.addEventListener('click',function(e){ e.stopPropagation(); togglePanel(panel.hidden); });
+  setBtn.addEventListener('click',function(e){ e.stopPropagation(); if(panel.hidden){ var bp=document.getElementById('bmPanel'); bp.hidden=true; document.getElementById('bmBtn').setAttribute('aria-expanded','false'); } togglePanel(panel.hidden); });
   document.addEventListener('click',function(e){ if(!panel.hidden && !panel.contains(e.target) && e.target!==setBtn) togglePanel(false); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !panel.hidden){ togglePanel(false); setBtn.focus(); } });
+
+  // bookmarks
+  var BMK='cd-bookmarks', bmBtn=document.getElementById('bmBtn'), bmPanel=document.getElementById('bmPanel'),
+      bmList=document.getElementById('bmList'), bmEmpty=document.getElementById('bmEmpty'), bmCount=document.getElementById('bmCount');
+  var bms=[]; try{ bms=JSON.parse(localStorage.getItem(BMK)||'[]')||[]; }catch(e){}
+  var heads=[].slice.call(document.querySelectorAll('#content h3.sec, #content h4.sub'));
+  function keyOf(h){ return h.dataset.title; }
+  function partOf(h){ var p=h.closest('.blk'); while(p&&(p=p.previousElementSibling)){ var x=p.querySelector('h3.sec'); if(x) return x.dataset.title; } return ''; }
+  function findHead(key){
+    var h=heads.filter(function(x){return keyOf(x)===key})[0]; if(h) return h;
+    var m=key.match(/^Q\d+\./); if(m) return heads.filter(function(x){return keyOf(x).indexOf(m[0])===0})[0]||null;
+    return null;
+  }
+  var cloudSaveBm=null;
+  function saveBm(){ try{localStorage.setItem(BMK,JSON.stringify(bms))}catch(e){} if(cloudSaveBm) cloudSaveBm(bms); }
+  function isOn(key){ return bms.some(function(b){return b.k===key}); }
+  function renderBm(){
+    heads.forEach(function(h){ var on=isOn(keyOf(h)); h._bm.classList.toggle('on',on); h._bm.textContent=on?'★':'☆';
+      h._bm.setAttribute('aria-pressed',String(on)); h._bm.setAttribute('aria-label',(on?'북마크 해제: ':'북마크: ')+keyOf(h)); });
+    bmList.innerHTML='';
+    bms.forEach(function(b,i){
+      var li=document.createElement('li'), a=document.createElement('a'), d=document.createElement('button');
+      a.href='#'; a.textContent=b.k;
+      if(b.p){ var w=document.createElement('span'); w.className='bm-where'; w.textContent=b.p; a.appendChild(w); }
+      a.addEventListener('click',function(e){ e.preventDefault(); gotoBm(b.k); });
+      d.className='bm-del'; d.type='button'; d.textContent='✕'; d.setAttribute('aria-label','북마크 삭제: '+b.k);
+      d.addEventListener('click',function(e){ e.stopPropagation(); bms.splice(i,1); saveBm(); renderBm(); });
+      li.appendChild(a); li.appendChild(d); bmList.appendChild(li);
+    });
+    bmEmpty.hidden=bms.length>0; bmCount.hidden=!bms.length; bmCount.textContent=bms.length;
+  }
+  function toggleBm(open){ bmPanel.hidden=!open; bmBtn.setAttribute('aria-expanded',String(open));
+    if(open){ panel.hidden=true; setBtn.setAttribute('aria-expanded','false'); } }
+  function gotoBm(key){
+    var h=findHead(key); toggleBm(false); if(!h) return;
+    if(q.value.trim()){ q.value=''; filter(); navEl.classList.remove('filtering'); }
+    var top=h.getBoundingClientRect().top+window.scrollY-topH()-6;
+    window.scrollTo({top:top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    revealCurrent(h.id); var b=h.closest('.blk'); b.classList.remove('bm-flash'); void b.offsetWidth; b.classList.add('bm-flash');
+  }
+  heads.forEach(function(h){
+    h.dataset.title=h.textContent.trim();
+    var btn=document.createElement('button'); btn.type='button'; btn.className='bmk'; h._bm=btn; h.appendChild(btn);
+    btn.addEventListener('click',function(e){ e.preventDefault(); var k=keyOf(h);
+      if(isOn(k)) bms=bms.filter(function(b){return b.k!==k}); else bms.unshift({k:k,p:h.tagName==='H4'?partOf(h):'',t:Date.now()});
+      saveBm(); renderBm(); });
+  });
+  bmBtn.addEventListener('click',function(e){ e.stopPropagation(); toggleBm(bmPanel.hidden); });
+  document.addEventListener('click',function(e){ if(!bmPanel.hidden && !bmPanel.contains(e.target) && !bmBtn.contains(e.target)) toggleBm(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !bmPanel.hidden){ toggleBm(false); bmBtn.focus(); } });
+  window.CDBM={ get:function(){return bms},
+    set:function(v){ bms=Array.isArray(v)?v:[]; try{localStorage.setItem(BMK,JSON.stringify(bms))}catch(e){} renderBm(); },
+    setCloud:function(fn){cloudSaveBm=fn},
+    status:function(txt,on){ var s=document.getElementById('bmSync'); s.textContent=txt; s.className='bm-sync'+(on?' on':''); } };
+  renderBm();
 
   // mobile drawer
   function close(){side.classList.remove('open');scrim.classList.remove('on');}
@@ -517,5 +601,34 @@ aside.note{border-left-color:var(--line2)}
 })();
 </script>
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+<script type="module">
+// 북마크 클라우드 동기화 — 체크리스트에서 구글 로그인한 계정을 그대로 사용
+const cfg={apiKey:"AIzaSyBMFO-kqcx3vgd1LvMP9ly_0kPmsAIvvZo",authDomain:"reddesert-checklist.firebaseapp.com",projectId:"reddesert-checklist",storageBucket:"reddesert-checklist.firebasestorage.app",messagingSenderId:"853446207690",appId:"1:853446207690:web:8ac77b10c7fee19201ec33"};
+try{
+  const V="10.12.2";
+  const {initializeApp}=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
+  const A=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-auth.js`);
+  const F=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-firestore.js`);
+  const app=initializeApp(cfg), auth=A.getAuth(app), db=F.getFirestore(app);
+  let unsub=null, timer=null, chain=Promise.resolve();
+  A.onAuthStateChanged(auth, async user=>{
+    if(unsub){unsub();unsub=null;} CDBM.setCloud(null);
+    if(!user){ CDBM.status("이 기기에 저장 · 체크리스트에서 로그인하면 동기화"); return; }
+    const ref=F.doc(db,"checklists",user.uid);
+    try{
+      const snap=await F.getDoc(ref);
+      const cloud=snap.exists()?snap.data().bookmarks:undefined;
+      if(Array.isArray(cloud)){
+        const local=CDBM.get(), keys=new Set(cloud.map(b=>b.k)), extra=local.filter(b=>!keys.has(b.k));
+        const merged=cloud.concat(extra); CDBM.set(merged);
+        if(extra.length) await F.setDoc(ref,{bookmarks:merged,bmUpdatedAt:F.serverTimestamp()},{mergeFields:["bookmarks","bmUpdatedAt"]});
+      } else await F.setDoc(ref,{bookmarks:CDBM.get(),bmUpdatedAt:F.serverTimestamp()},{mergeFields:["bookmarks","bmUpdatedAt"]});
+    }catch(e){ CDBM.status("동기화 실패 · 이 기기에 저장"); return; }
+    CDBM.setCloud(list=>{ clearTimeout(timer); timer=setTimeout(()=>{ const data={bookmarks:list.slice(),bmUpdatedAt:F.serverTimestamp()};
+      chain=chain.then(()=>F.setDoc(ref,data,{mergeFields:["bookmarks","bmUpdatedAt"]})).then(()=>CDBM.status("☁ 동기화됨",true)).catch(()=>CDBM.status("저장 실패")); },300); });
+    unsub=F.onSnapshot(ref,s=>{ if(s.metadata.hasPendingWrites) return; const b=s.exists()?s.data().bookmarks:undefined; if(Array.isArray(b)) CDBM.set(b); CDBM.status("☁ 동기화됨",true); },()=>CDBM.status("동기화 끊김"));
+  });
+}catch(e){ /* 오프라인 등: 이 기기 저장만 사용 */ }
+</script>
 </body>
 </html>
