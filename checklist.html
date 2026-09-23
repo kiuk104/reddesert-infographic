@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>어비스 수집 체크리스트</title>
+<meta name="cd-build" content="20260923180537">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16120e" media="(prefers-color-scheme: dark)">
@@ -115,6 +116,16 @@ details.sync .row{margin-top:8px}
 #syncMsg{color:var(--muted);font-size:.8rem}
 footer{margin-top:28px;font-size:.8rem;color:var(--muted);display:grid;gap:6px}
 footer a{color:var(--abyss)}
+.upd-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;
+ display:flex;align-items:center;gap:12px;max-width:calc(100vw - 32px);background:var(--ink);color:var(--bg);
+ border-radius:10px;padding:10px 10px 10px 16px;box-shadow:0 8px 24px rgba(0,0,0,.3);font-size:13.5px}
+.upd-toast span{white-space:nowrap}
+.upd-toast button{border:0;border-radius:7px;background:var(--crimson);color:#fff;font:inherit;font-size:13px;font-weight:600;padding:7px 12px;cursor:pointer;white-space:nowrap}
+.upd-toast .x{background:transparent;color:inherit;opacity:.7;padding:7px 8px;font-weight:400}
+.sp-app{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.sp-app button{border:1px solid var(--line2);border-radius:8px;background:transparent;color:var(--ink);font:inherit;font-size:13px;padding:8px 14px;cursor:pointer}
+.sp-app button:hover{border-color:var(--crimson);color:var(--crimson)}
+.sp-app span{font-size:11.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -150,6 +161,8 @@ footer a{color:var(--abyss)}
     <div class="seg" id="segTheme" role="group" aria-label="테마"><button data-v="system">시스템</button><button data-v="light">라이트</button><button data-v="dark">다크</button></div></div>
   <div class="sp-row"><span class="sp-lab">글자 크기</span>
     <div class="seg" id="segFs" role="group" aria-label="글자 크기"><button data-v="0.9">작게</button><button data-v="1">보통</button><button data-v="1.12">크게</button><button data-v="1.25">아주 크게</button></div></div>
+    <div class="sp-row"><span class="sp-lab">앱</span>
+      <div class="sp-app"><button type="button" id="reloadBtn">↻ 새로고침</button><span id="buildInfo"></span></div></div>
   <p class="sp-note">공략집과 같은 설정을 써요. 이 기기에 저장돼요.</p>
 </div>
 <div class="zoomed">
@@ -398,5 +411,30 @@ else {
 }
 </script>
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+<div class="upd-toast" id="updToast" role="status" hidden><span>새 버전이 있어요</span><button type="button" id="updGo">업데이트</button><button type="button" class="x" id="updX" aria-label="닫기">✕</button></div>
+<script>
+// 새 버전 확인 — 설치한 앱에서도 당겨서 새로고침 없이 업데이트
+(function(){
+  var me=(document.querySelector('meta[name="cd-build"]')||{}).content||'';
+  var page=location.pathname.split('/').pop()||'index.html';
+  var info=document.getElementById('buildInfo');
+  if(info&&me){ var d=new Date(Date.UTC(+me.slice(0,4),+me.slice(4,6)-1,+me.slice(6,8),+me.slice(8,10),+me.slice(10,12))); var z=function(n){return (n<10?'0':'')+n}; info.textContent='버전 '+z(d.getMonth()+1)+'/'+z(d.getDate())+' '+z(d.getHours())+':'+z(d.getMinutes()); }
+  function go(){ try{ if(navigator.serviceWorker&&navigator.serviceWorker.controller){ caches.keys().then(function(ks){ return Promise.all(ks.map(function(k){return caches.delete(k)})); }).finally(function(){ location.reload(); }); return; } }catch(e){} location.reload(); }
+  var rb=document.getElementById('reloadBtn'); if(rb) rb.addEventListener('click',go);
+  var toast=document.getElementById('updToast'), dismissed=false;
+  document.getElementById('updGo').addEventListener('click',go);
+  document.getElementById('updX').addEventListener('click',function(){ toast.hidden=true; dismissed=true; });
+  var busy=false;
+  function check(){
+    if(busy||dismissed||!me||!navigator.onLine) return; busy=true;
+    fetch(page+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){
+      var m=t.match(/<meta name="cd-build" content="(\d+)"/); if(m&&m[1]>me) toast.hidden=false;
+    }).catch(function(){}).finally(function(){ busy=false; });
+  }
+  setTimeout(check,2500);
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='visible') check(); });
+  window.addEventListener('online',check);
+})();
+</script>
 </body>
 </html>
